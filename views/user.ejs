@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Crowdfire</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse">
+    </nav>
+    <div class="container">
+      <div class="row">
+        <div class="form-group col-md-3">
+          <label for="search">Search By User ID</label>
+          <input type="text" value="<%= searchUserId %>" name="searchByUserId" class="form-control" id="searchByUserId" placeholder = "Eg. 3495832"/>
+        </div>
+        <div class="form-group col-md-3">
+          <label for="search">Search By Username</label>
+          <input type="text" value="<%= searchUserName %>" name="searchByUserName" class="form-control" id="searchByUserName" placeholder = "Eg. Erik"/>
+        </div>
+        <div class="form-group col-md-1">
+          <label></label>
+          <input type="button" id="search" class="btn btn-success" value="Search" />
+        </div>
+      </div>
+      <% if(maxTime) { %>
+        <div class="row">
+          <label>Best time to post : <%= maxTime %></label>
+        </div>
+      <% } %>
+      <% if(maxDay) { %>
+        <div class="row">
+          <label>Best day of the week to post : <%= maxDay %></label>
+        </div>
+      <% } %>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+  </body>
+</html>
+ <script>
+  $(document).ready(function () {
+    $(document).on("click","#search",function(e){
+      e.preventDefault();
+      window.location.href = '/?searchByUserId=' +$('#searchByUserId').val()+'&searchByUserName=' +$('#searchByUserName').val()
+    })
+    $(document).on("keyup",'#searchByUserName',function() {
+      if($('#searchByUserId').val().length>0) {
+        alert('You can either search by Id or Username');
+        document.getElementById('searchByUserName').value = "";
+      }
+    });
+    $(document).on("keyup",'#searchByUserId',function() {
+      if($('#searchByUserName').val().length>0) {
+        alert('You can either search by Id or Username');
+        document.getElementById('searchByUserId').value = "";
+      }
+    });
+  })
+</script>
