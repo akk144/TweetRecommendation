@@ -1,6 +1,6 @@
 exports.user = {
   akansh: {
-    "user_id": 2244994945,
+    "user_id": 19860570,
     "screen_name": "akansh"
   },
   unRegisteredUser: {
